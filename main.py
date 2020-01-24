@@ -2,9 +2,13 @@ from flask import Flask, render_template
 
 app = Flask(__name__)
 
-@app.route("/")
+@app.route('/')
 def index():
-  return "<a href='/home'>HI!</a>"
+  return "<a href='/home'>Hi!</a>"
+
+@app.route('/home')
+def home():
+  return render_template('home.html')
 
 @app.route('/about')
 def about():
@@ -12,11 +16,7 @@ def about():
 
 @app.route('/contact')
 def contact():
-  return render_template('contact.html')
-
-@app.route('/home')
-def home():
-  return render_template('home.html')  
+  return render_template('contact.html', phone = 7442457)
 
 if __name__ == '__main__':
-  app.run(host="0.0.0.0", port = 5222, threaded = True, debug = True)
+  app.run(host='0.0.0.0', port = 5222, threaded = True, debug = True)
